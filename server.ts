@@ -24,6 +24,6 @@ app.use(async (ctx: any, next: any) => {
 app.on('error', (err: any, ctx: any) => {
   console.error('server error', err, ctx);
 });
-app.listen(3000, '0.0.0.0', function () {
+app.listen(8888, '0.0.0.0', function () {
   console.log('start success');
 });

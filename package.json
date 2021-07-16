@@ -7,6 +7,7 @@
     "watch": "yarn run tslint && tsc -w",
     "build": "yarn run tslint && tsc",
     "dev": "./node_modules/.bin/nodemon dist/server.js",
+    "start":"pm2 start dist/server.js --name koa-typescript-api",
     "tslint": "tslint -c tslint.json -p tsconfig.json"
   },
   "repository": {

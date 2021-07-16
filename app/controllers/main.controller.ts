@@ -7,7 +7,6 @@ export class MainController {
   }
   @Get('/user')
   public async user(@Ctx ctx: any) {
-    console.log(ctx.query);
     ctx.body = '用户中心';
   }
   @Post('/aa')
