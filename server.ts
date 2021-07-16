@@ -1,12 +1,11 @@
-const Koa = require('koa');
-const { useControllers } = require('koa-controllers');
+import * as Koa from 'koa';
+import { useControllers } from 'koa-controllers';
 const app = new Koa();
-useControllers(app, __dirname + '/app/*/*.ts', {
+useControllers(app, __dirname + '/app/controllers/*.controller.js', {
   multipart: {
     dest: '',
   },
 });
-import tsRoutes from './routers/tsRoutes';
 app.use(async (ctx: any, next: any) => {
   await next();
   const rt = ctx.response.get('X-Response-Time');
@@ -20,10 +19,6 @@ app.use(async (ctx: any, next: any) => {
   await next();
   const ms = Date.now() - start;
   ctx.set('X-Response-Time', `${ms}ms`);
-});
-app.use(tsRoutes.routes(), tsRoutes.allowedMethods());
-app.use(async (ctx: any) => {
-  ctx.body = '请求成功';
 });
 app.on('error', (err: any, ctx: any) => {
   console.error('server error', err, ctx);

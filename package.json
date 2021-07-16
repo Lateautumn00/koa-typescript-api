@@ -6,23 +6,25 @@
   "scripts": {
     "watch": "yarn run tslint && tsc -w",
     "build": "yarn run tslint && tsc",
-    "serve": "./node_modules/.bin/nodemon dist/server.js",
+    "dev": "./node_modules/.bin/nodemon dist/server.js",
     "tslint": "tslint -c tslint.json -p tsconfig.json"
   },
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/cuilanchao/koa-api.git"
+    "url": "https://gitee.com/cuilanchao/koa-typescript-api.git"
   },
   "author": "晚秋",
   "license": "ISC",
   "dependencies": {
     "koa": "^2.13.1",
     "koa-controllers": "^0.1.6",
-    "koa-router": "^10.0.0"
+    "koa-router": "^10.0.0",
+    "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
     "@types/koa": "^2.13.4",
     "@types/koa-router": "^7.4.4",
+    "@types/reflect-metadata": "^0.1.0",
     "nodemon": "^2.0.12",
     "ts-node": "^10.1.0",
     "tslint": "^6.1.3",
