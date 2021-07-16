@@ -8,18 +8,10 @@ useControllers(app, path.join(__dirname, '/app/controllers/*.controller.js'), {
   },
 });
 app.use(async (ctx: any, next: any) => {
-  await next();
-  const rt = ctx.response.get('X-Response-Time');
-  // if (ctx.url.split('.').pop() === 'ico') {
-  //   return;
-  // }
-  console.log(`${ctx.method} ${ctx.url} - ${rt}`);
-});
-app.use(async (ctx: any, next: any) => {
   const start = Date.now();
   await next();
   const ms = Date.now() - start;
-  ctx.set('X-Response-Time', `${ms}ms`);
+  console.log(`${ctx.method} ${ctx.url} - ${ms}`);
 });
 app.on('error', (err: any, ctx: any) => {
   console.error('server error', err, ctx);
