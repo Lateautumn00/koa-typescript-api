@@ -11,7 +11,7 @@ app.use(async (ctx: any, next: any) => {
   const start = Date.now();
   await next();
   const ms = Date.now() - start;
-  console.log(`${ctx.method} ${ctx.url} - ${ms}`);
+  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
 });
 app.on('error', (err: any, ctx: any) => {
   console.error('server error', err, ctx);
