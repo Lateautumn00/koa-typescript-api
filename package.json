@@ -4,7 +4,7 @@
   "description": "api 接口",
   "main": "server.js",
   "scripts": {
-    "remove":"rm -rf dist",
+    "remove": "rm -rf dist",
     "watch": "yarn run remove && yarn run tslint && tsc -w",
     "build": "yarn run remove && yarn run tslint && tsc",
     "dev": "./node_modules/.bin/nodemon dist/server.js",
@@ -22,6 +22,7 @@
     "koa": "^2.13.1",
     "koa-controllers": "^0.1.6",
     "koa-router": "^10.0.0",
+    "log4js": "^6.3.0",
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {

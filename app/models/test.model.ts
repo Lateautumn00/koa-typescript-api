@@ -1,8 +1,8 @@
 class TestModel {
   text: string;
   public async index(text: string) {
-    const test1 = await this.getText1.call({ text: text });
-    const test2 = await this.getText2(text);
+    const test1: string = await this.getText1.call({ text: text });
+    const test2: string = await this.getText2(text);
     return `${test1} | ${test2}`;
   }
   protected getText1() {

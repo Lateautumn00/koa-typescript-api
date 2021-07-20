@@ -4,8 +4,10 @@ import TestModel from '../models/test.model';
 export class TestController {
   @Get('/test/index')
   public async index(@Ctx ctx: any) {
-    const getTestInfo = await TestModel.index('Hello koa-typescript-api');
-    ctx.body =  getTestInfo;
+    const getTestInfo: string = await TestModel.index(
+      'Hello koa-typescript-api'
+    );
+    ctx.body = getTestInfo;
   }
   @Get('/test/user')
   public async user(@Ctx ctx: any) {
