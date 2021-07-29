@@ -1,7 +1,7 @@
 import * as Koa from 'koa';
 import * as path from 'path';
 import { useControllers } from 'koa-controllers';
-import log4JsModules from './app/modules/log4js';
+import log4JsModules from './app/modules/log4js.module';
 const app: any = new Koa();
 /**
  * logStatus 是否开启日志打印，线上建议设为false

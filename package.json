@@ -18,11 +18,13 @@
   "author": "晚秋",
   "license": "ISC",
   "dependencies": {
+    "@types/mongoose": "^5.11.97",
     "@types/reflect-metadata": "^0.1.0",
     "koa": "^2.13.1",
     "koa-controllers": "^0.1.6",
     "koa-router": "^10.0.0",
     "log4js": "^6.3.0",
+    "mongoose": "^5.13.4",
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {

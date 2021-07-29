@@ -1,5 +1,5 @@
 import * as log4js from 'log4js';
-import LogConfig from '../../config/log4js';
+import LogConfig from '../../config/log4js.config';
 log4js.configure(LogConfig);
 const resLogger: any = log4js.getLogger('resLogger');
 const errorLogger: any = log4js.getLogger('errorLogger');
