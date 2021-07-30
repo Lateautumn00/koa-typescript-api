@@ -1,3 +1,11 @@
+/*
+ * @Description:启动 入口文件
+ * @Author: Lanchao cui
+ * @Date: 2021-07-30 20:01:02
+ * @LastEditTime: 2021-07-30 20:07:12
+ * @LastEditors: Lanchao cui
+ * @Reference:
+ */
 import * as Koa from 'koa';
 import * as path from 'path';
 import { useControllers } from 'koa-controllers';

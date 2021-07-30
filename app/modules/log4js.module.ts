@@ -1,3 +1,11 @@
+/*
+ * @Description:log4js日志模块
+ * @Author: Lanchao cui
+ * @Date: 2021-07-30 20:01:02
+ * @LastEditTime: 2021-07-30 20:08:38
+ * @LastEditors: Lanchao cui
+ * @Reference:
+ */
 import * as log4js from 'log4js';
 import LogConfig from '../../config/log4js.config';
 log4js.configure(LogConfig);

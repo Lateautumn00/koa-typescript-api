@@ -1,3 +1,11 @@
+/*
+ * @Description: 用户数据表
+ * @Author: Lanchao cui
+ * @Date: 2021-07-30 20:01:02
+ * @LastEditTime: 2021-07-30 20:08:50
+ * @LastEditors: Lanchao cui
+ * @Reference:
+ */
 import mongoose from '../modules/mongoose.module';
 /**
  * 表名

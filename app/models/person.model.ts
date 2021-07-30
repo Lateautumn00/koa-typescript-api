@@ -1,5 +1,10 @@
-/**
- * 定义抽象函数为model 基类
+/*
+ * @Description:定义抽象函数为model 基类
+ * @Author: Lanchao cui
+ * @Date: 2021-07-30 20:01:02
+ * @LastEditTime: 2021-07-30 20:08:33
+ * @LastEditors: Lanchao cui
+ * @Reference:
  */
 abstract class PersonModel {
   /**

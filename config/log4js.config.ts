@@ -1,3 +1,11 @@
+/*
+ * @Description:log4js配置
+ * @Author: Lanchao cui
+ * @Date: 2021-07-30 20:01:02
+ * @LastEditTime: 2021-07-30 20:06:39
+ * @LastEditors: Lanchao cui
+ * @Reference:
+ */
 import * as path from 'path';
 const baseLogPath = path.resolve(__dirname, '../logs');
 const errorLogPath = path.resolve(__dirname, '../logs/error/error.log');

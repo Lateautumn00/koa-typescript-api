@@ -1,8 +1,13 @@
+/*
+ * @Description:usermodel
+ * @Author: Lanchao cui
+ * @Date: 2021-07-30 20:01:02
+ * @LastEditTime: 2021-07-30 20:04:45
+ * @LastEditors: Lanchao cui
+ * @Reference:
+ */
 import PersonModel from './person.model';
 import userSchema from '../schema/user.schema';
-/**
- * 操作user表
- */
 class UserModel extends PersonModel {
   constructor() {
     super();

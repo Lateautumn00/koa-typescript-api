@@ -1,5 +1,10 @@
-/**
- * user表字段类型规范
+/*
+ * @Description: user表字段类型规范
+ * @Author: Lanchao cui
+ * @Date: 2021-07-30 20:01:02
+ * @LastEditTime: 2021-07-30 20:08:26
+ * @LastEditors: Lanchao cui
+ * @Reference:
  */
 export interface UserInterface {
   nickName: string;

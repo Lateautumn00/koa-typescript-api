@@ -1,3 +1,11 @@
+/*
+ * @Description: 用户
+ * @Author: Lanchao cui
+ * @Date: 2021-07-30 20:01:02
+ * @LastEditTime: 2021-07-30 20:02:26
+ * @LastEditors: Lanchao cui
+ * @Reference:
+ */
 import { Controller, Get, Post, Ctx, RequestParam } from 'koa-controllers';
 import UserModel from '../models/user.model';
 import PersonController from './person.controller';
