@@ -2,13 +2,13 @@
  * @Description:定义抽象函数为model 基类
  * @Author: Lanchao cui
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-07-30 20:08:33
+ * @LastEditTime: 2021-07-30 20:27:22
  * @LastEditors: Lanchao cui
  * @Reference:
  */
 abstract class PersonModel {
   /**
-   *  //构造函数 因 在抽象类中无法实例化该对象，古此处构造函数无用
+   *  构造函数 因 在抽象类中无法实例化该对象，古此处构造函数无用
    */
   constructor() {}
   /**
