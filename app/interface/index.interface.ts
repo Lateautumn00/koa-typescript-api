@@ -1,3 +1,3 @@
-export interface IndexInterface{
-    time:string;
+export interface IndexInterface {
+  time: string;
 }

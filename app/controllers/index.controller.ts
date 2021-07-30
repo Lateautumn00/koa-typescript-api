@@ -7,9 +7,9 @@ class IndexController extends PersonController {
   @Get('/')
   public getServeTime(@Ctx ctx: any) {
     const date: IndexInterface = {
-      time:dayjs().format('YYYY-MM-DD HH:mm:ss'),
+      time: dayjs().format('YYYY-MM-DD HH:mm:ss'),
     };
-    ctx.body = this.fromData(1000, date, '成功');
+    ctx.body = this.fromData(1000, date, '访问 koa-ts-api 成功');
   }
 }
 export default IndexController;

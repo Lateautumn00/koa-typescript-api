@@ -13,7 +13,7 @@ abstract class PersonModel {
   /**
    * 更新数据
    */
-  abstract update(where: object,data: object);
+  abstract update(where: object, data: object);
   /**
    * 读取数据
    */
