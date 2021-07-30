@@ -3,27 +3,24 @@
  */
 abstract class PersonModel {
   /**
-   * 数据表名
+   *  //构造函数 因 在抽象类中无法实例化该对象，古此处构造函数无用
    */
-  abstract table: string;
-  /**
-   * constructor() {} //构造函数 因 在抽象类中无法实例化该对象，古此处构造函数无用
-   */
+  constructor() {}
   /**
    * 创建数据
    */
-  abstract create();
+  abstract create(data: object);
   /**
    * 更新数据
    */
-  abstract update();
+  abstract update(where: object,data: object);
   /**
    * 读取数据
    */
-  abstract read();
+  abstract find(where: object);
   /**
    * 删除数据
    */
-  abstract delete();
+  abstract remove(where: object);
 }
 export default PersonModel;

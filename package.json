@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "remove": "rm -rf dist",
-    "watch": "yarn run remove && yarn run tslint && tsc -w",
+    "watch": "yarn run tslint && tsc -w",
     "build": "yarn run remove && yarn run tslint && tsc",
     "dev": "./node_modules/.bin/nodemon dist/server.js",
     "start": "pm2 start dist/server.js --name koa-typescript-api",
@@ -20,6 +20,7 @@
   "dependencies": {
     "@types/mongoose": "^5.11.97",
     "@types/reflect-metadata": "^0.1.0",
+    "dayjs": "^1.10.6",
     "koa": "^2.13.1",
     "koa-controllers": "^0.1.6",
     "koa-router": "^10.0.0",

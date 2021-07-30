@@ -15,3 +15,4 @@ dbConnect.once('close', () => {
 dbConnect.on('error', (error: any) => {
   console.log('mongodb database error' + error);
 });
+export default mongoose;
