@@ -7,10 +7,11 @@
  * @Reference:
  */
 import mongoose from '../../modules/mongoose.module';
+import db from '../../../config/db.config';
 /**
  * 表名
  */
-const table = 'user';
+const table = `${db.prefix}user`;
 /**
  * 定义表结构 字段 类型
  */
