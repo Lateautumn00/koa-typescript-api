@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <title>WebSocket connection</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+
+    </div>
+    <script>
+        let vueDemo = new Vue({
+            el: '#app',
+            data: {
+                sockets: {
+                    serverUrl: 'ws://127.0.0.1:8888/socket/getName?guid=123',//socket服务地址
+                    liveSocket: null,
+                },
+            },
+            mounted: function () {
+                this.createTutorSocket();
+            },
+            methods: {
+                createTutorSocket: function () {
+                    let url = this.sockets.serverUrl;
+                    this.sockets.liveSocket = new WebSocket(url);
+                    this.sockets.liveSocket.onopen = this.liveSocketOpen;
+                    this.sockets.liveSocket.onerror = this.liveSocketError;
+                    this.sockets.liveSocket.onmessage = this.liveSocketMessage;
+                    this.sockets.liveSocket.onclose = this.liveSocketClose;
+                },
+                liveSocketOpen: function () {
+                    this.liveHeartCheckFun(); //心跳
+                    //this.setMessage();
+
+                },
+                liveSocketError: function () { },
+                liveSocketMessage: function (e) {
+                    const redata = JSON.parse(e.data);
+                    switch (redata.type) {
+                        case 'MESSAGE':
+                            console.log(redata);
+                            break;
+                        default:
+                            break;
+                    }
+                },
+                liveSocketClose: function () { },
+                liveHeartCheckFun: function () {
+                    let data = `{"type": "PING","data": {}}`;
+                    setInterval(() => {
+                        this.setSocketSend(data);
+                    }, 5000)
+                },//心跳检测
+                setSocketSend: function (message) {
+                    let { liveSocket } = this.sockets;
+                    if (liveSocket) {
+                        liveSocket.send(message);
+                    }
+                },//发送消息
+                setMessage: function () {
+                    let data = `{"type": "MESSAGE","data": {}}`;
+                    setInterval(() => {
+                        this.setSocketSend(data);
+                    }, 1000)
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>

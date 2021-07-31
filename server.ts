@@ -10,9 +10,11 @@ import * as Koa from 'koa';
 import * as path from 'path';
 import * as cors from 'koa2-cors';
 import { useControllers } from 'koa-controllers';
-import log4JsModules from './app/modules/log4js.module';
 import * as http from 'http';
 import * as ws from 'ws';
+import * as qs from 'qs';
+import log4JsModules from './app/modules/log4js.module';
+
 const app: any = new Koa();
 
 /**
@@ -54,22 +56,46 @@ app.use(async (ctx: any, next: any) => {
 });
 const server: any = http.createServer(app.callback());
 /**
- * websocket open
+ * websocket 服务 open   如果不需要  可去掉
  */
-const wsApp: any = new ws.Server({ noServer: true });
-wsApp.on('connection', function (conn) {
+const webSocket: any = new ws.Server({ server });
+webSocket.on('connection', function (conn: any, request: any) {
   console.log('ws connect');
-  conn.on('message', function incoming(message) {
+  conn.on('message', (message: any) => {
     console.log('received: %s', message);
+    message = JSON.parse(message);
+    switch (message.type) {
+      case 'PING':
+        conn.send(
+          JSON.stringify({
+            code: 1000,
+            type: 'PONG',
+            data: {},
+            message: '成功',
+          })
+        );
+        break;
+      default:
+        break;
+    }
   });
 });
-server.on('upgrade', function upgrade(request, socket, head) {
-  console.log('ws');
-  const pathname = request.url;
-  console.log(pathname);
+server.on('upgrade', function upgrade(request: any, socket: any, head: any) {
+  const pathname: string = request.url.split('?')[0];
+  if (pathname === '/socket/getName') {
+    console.log('进来啦');
+    /**
+     * server.handleUpgrade(request, socket, head, function done(conn) {
+      server.emit('connection', conn, request);
+    });
+    */
+  } else {
+    console.error('不存在的websocket连接地址');
+    socket.destroy();
+  }
 });
 /**
- * websocket end
+ * websocket 服务 end
  */
 server.on('error', (err: any, ctx: any) => {
   console.error('server error', err, ctx);
