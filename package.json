@@ -21,17 +21,21 @@
     "@types/mongoose": "^5.11.97",
     "@types/reflect-metadata": "^0.1.0",
     "dayjs": "^1.10.6",
+    "http": "^0.0.1-security",
     "koa": "^2.13.1",
     "koa-controllers": "^0.1.6",
     "koa-router": "^10.0.0",
     "koa2-cors": "^2.0.6",
     "log4js": "^6.3.0",
     "mongoose": "^5.13.4",
-    "reflect-metadata": "^0.1.13"
+    "reflect-metadata": "^0.1.13",
+    "ws": "^8.0.0"
   },
   "devDependencies": {
     "@types/koa": "^2.13.4",
     "@types/koa-router": "^7.4.4",
+    "@types/koa2-cors": "^2.0.2",
+    "@types/ws": "^7.4.7",
     "nodemon": "^2.0.12",
     "ts-node": "^10.1.0",
     "tslint": "^6.1.3",
