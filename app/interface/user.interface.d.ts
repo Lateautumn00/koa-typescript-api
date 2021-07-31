@@ -2,7 +2,7 @@
  * @Description: user表字段类型规范
  * @Author: Lanchao cui
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-07-30 20:08:26
+ * @LastEditTime: 2021-07-31 09:44:59
  * @LastEditors: Lanchao cui
  * @Reference:
  */

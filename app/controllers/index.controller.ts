@@ -2,7 +2,7 @@
  * @Description:默认
  * @Author: Lanchao cui
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-07-30 20:01:51
+ * @LastEditTime: 2021-07-31 09:40:49
  * @LastEditors: Lanchao cui
  * @Reference:
  */
@@ -13,11 +13,15 @@ import * as dayjs from 'dayjs';
 @Controller
 class IndexController extends PersonController {
   @Get('/')
-  public getServeTime(@Ctx ctx: any) {
+  public getServeTime(@Ctx ctx: any): object {
     const date: IndexInterface = {
       time: dayjs().format('YYYY-MM-DD HH:mm:ss'),
     };
-    ctx.body = this.fromData(1000, date, '访问 koa-typescript-api 成功');
+    return (ctx.body = this.fromData(
+      1000,
+      date,
+      '访问 koa-typescript-api 成功'
+    ));
   }
 }
 export default IndexController;

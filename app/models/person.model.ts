@@ -2,7 +2,7 @@
  * @Description:定义抽象函数为model 基类
  * @Author: Lanchao cui
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-07-30 20:27:22
+ * @LastEditTime: 2021-07-31 09:56:00
  * @LastEditors: Lanchao cui
  * @Reference:
  */
@@ -14,18 +14,18 @@ abstract class PersonModel {
   /**
    * 创建数据
    */
-  abstract create(data: object);
+  abstract create<D>(data: D);
   /**
    * 更新数据
    */
-  abstract update(where: object, data: object);
+  abstract update<W, D>(where: W, data: D);
   /**
    * 读取数据
    */
-  abstract find(where: object);
+  abstract find<W>(where: W);
   /**
    * 删除数据
    */
-  abstract remove(where: object);
+  abstract remove<W>(where: W);
 }
 export default PersonModel;

@@ -12,7 +12,7 @@ koa 中引入 typescript ，借鉴 mvc 模式
 --filters  （过滤器）
 --modules （模块）
 --models （model 层）
---schema （数据表规范）
+  --schemaModel （数据表规范）
 --interface (数据接口)
 --config （配置）
 ==dist （打包生成）
