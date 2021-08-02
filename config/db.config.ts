@@ -2,7 +2,7 @@
  * @Description:mongodb配置
  * @Author: Lanchao cui
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-07-30 20:09:10
+ * @LastEditTime: 2021-08-02 20:16:56
  * @LastEditors: Lanchao cui
  * @Reference:
  * db_user: 'koa',用户名
