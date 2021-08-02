@@ -2,7 +2,7 @@
  * @Description:启动 入口文件
  * @Author: Lanchao cui
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-07-31 17:51:47
+ * @LastEditTime: 2021-08-02 17:22:27
  * @LastEditors: Lanchao cui
  * @Reference:
  */
@@ -86,9 +86,9 @@ server.on('upgrade', function upgrade(request: any, socket: any, head: any) {
     console.log('进来啦');
     /**
      * server.handleUpgrade(request, socket, head, function done(conn) {
-      server.emit('connection', conn, request);
-    });
-    */
+     * server.emit('connection', conn, request);
+     * });
+     */
   } else {
     console.error('不存在的websocket连接地址');
     socket.destroy();

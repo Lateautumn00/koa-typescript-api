@@ -2,7 +2,7 @@
  * @Description:usermodel
  * @Author: Lanchao cui
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-07-31 10:50:23
+ * @LastEditTime: 2021-08-02 19:44:56
  * @LastEditors: Lanchao cui
  * @Reference:
  */
@@ -23,7 +23,7 @@ class UserModel extends PersonModel {
   constructor() {
     super();
   }
-  async create<UserInterface>(data: UserInterface): Promise<any> {
+  async create<UserInterface>(data: UserInterface): Promise<object> {
     /**
      * 实例化
      */
@@ -37,28 +37,25 @@ class UserModel extends PersonModel {
   async update<UpdateUserGuid, UpdateUserNickName>(
     where: UpdateUserGuid,
     data: UpdateUserNickName
-  ): Promise<any> {
+  ): Promise<MongodbUpdate> {
     const updateData = await userSchemaModel.updateOne(where, data);
-    const returnData: MongodbUpdate = {
+    return {
       status: updateData.n ? true : false,
     };
-    return returnData;
   }
-  async find<GetUserInterface>(where: GetUserInterface): Promise<any> {
+  async find<GetUserInterface>(where: GetUserInterface): Promise<MongodbFind> {
     const list: Array<any> = await userSchemaModel.find(where);
-    const returnData: MongodbFind = {
+    return {
       count: list.length,
       data: list,
     };
-    return returnData;
   }
-  async remove<UpdateUserGuid>(where: UpdateUserGuid): Promise<any> {
+  async remove<UpdateUserGuid>(where: UpdateUserGuid): Promise<MongodbRemove> {
     const removeData = await userSchemaModel.remove(where);
-    const returnData: MongodbRemove = {
+    return {
       status: removeData.n ? true : false,
       deletedCount: removeData.deletedCount,
     };
-    return returnData;
   }
 }
 export default UserModel;
