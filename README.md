@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Author: Lanchao cui
+ * @Date: 2021-07-15 16:40:49
+ * @LastEditTime: 2021-08-03 20:39:59
+ * @LastEditors: Lanchao cui
+ * @Reference: 
+-->
 # koa-typescript-api
 
 #### 介绍
@@ -8,12 +16,13 @@ koa 中引入 typescript ，借鉴 mvc 模式
 #### 软件架构
 
 --app (代码)
---controllers（控制层）
---filters （过滤器）
---modules （模块）
---models （model 层）
---schemaModel （数据表规范）
---interface (数据接口)
+----controllers（控制层,只负责接收参数和接收结果）
+----service (逻辑层 负责处理具体逻辑)
+----filters （过滤器）
+----modules （模块）
+----models （model 层 只负责处理与第三方数据交互）
+------schemaModel （数据表规范）
+----interface (数据接口)
 --config （配置）
 ==dist （打包生成）
 --node_modules

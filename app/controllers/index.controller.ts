@@ -2,7 +2,7 @@
  * @Description:默认
  * @Author: Lanchao cui
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-07-31 09:40:49
+ * @LastEditTime: 2021-08-03 20:10:23
  * @LastEditors: Lanchao cui
  * @Reference:
  */
@@ -25,8 +25,7 @@ import * as dayjs from 'dayjs';
 @Controller('/test')
 class IndexController extends PersonController {
   @Get('/')
-  public getServeTime(@Query('id') id: number): object {
-    console.log(id);
+  public getServeTime(): object {
     const data: IndexInterface = {
       time: dayjs().format('YYYY-MM-DD HH:mm:ss'),
     };

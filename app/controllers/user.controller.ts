@@ -2,7 +2,7 @@
  * @Description: 用户
  * @Author: Lanchao cui
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-08-03 15:23:07
+ * @LastEditTime: 2021-08-03 20:51:15
  * @LastEditors: Lanchao cui
  * @Reference:
  */
@@ -32,13 +32,14 @@ import {
   MongodbFind,
   MongodbUpdate,
 } from '../interface/mongodb.interface';
+import UserService from '../service/user.sevice';
 @Controller('/user')
 class UserController extends PersonController {
   /**
    * 添加数据
-   * @param ctx
-   * @param nickName
-   * @param guid
+   * @description:
+   * @param  {*}
+   * @return {*}
    */
   @Post('/create')
   public async createUser(
@@ -51,55 +52,55 @@ class UserController extends PersonController {
       guid,
       age,
     };
-    const user: UserModel = new UserModel();
-    const createUser = await user.create(userData);
+    const service = new UserService();
+    const createUser = await service.createUser(userData);
     return super.fromData(1000, createUser, '成功');
   }
   /**
-   * 修改
-   * @param ctx
-   * @param guid
+   * 修改数据
+   * @description:
+   * @param  {*}
+   * @return {*}
    */
   @Post('/update')
   public async updateUser(
     @Body('guid') guid: number,
     @Body('nickName') nickName: string
   ): Promise<any> {
-    const user: UserModel = new UserModel();
     const where: UpdateUserGuid = {
       guid,
     };
     const data: UpdateUserNickName = {
       nickName,
     };
-    const updateData: MongodbUpdate = await user.update(where, data);
+    const service = new UserService();
+    const updateData: MongodbUpdate = await service.updateUser(where, data);
     return updateData.status
       ? super.fromData(1000, {}, '成功')
       : super.fromData(1001, {}, '失败');
   }
   /**
    * 查询数据
-   * @param ctx
-   * @param guid
+   * @description:
+   * @param  {*}
+   * @return {*}
    */
-  @Get('/getList')
+  @Get('/getList/:guid?')
   public async getUser(@Params('guid') guid?: number): Promise<any> {
-    const user: UserModel = new UserModel();
-    const where: GetUserInterface = {};
-    if (guid) where.guid = guid;
-    const readUser: MongodbFind = await user.find(where);
+    const service = new UserService();
+    const readUser: MongodbFind = await service.getUser(guid ? guid : '');
     return super.fromData(1000, readUser.data, '成功');
   }
   /**
-   * 删除
+   * 删除数据
+   * @description:
+   * @param  {*}
+   * @return {*}
    */
   @Delete('/remove/:guid')
   public async removeUser(@Params('guid') guid: number): Promise<any> {
-    const user: UserModel = new UserModel();
-    const where: UpdateUserGuid = {
-      guid,
-    };
-    const removeUser: MongodbRemove = await user.remove(where);
+    const service = new UserService();
+    const removeUser: MongodbRemove = await service.removeUser(guid);
     return removeUser.status
       ? super.fromData(1000, {}, '成功')
       : super.fromData(1001, {}, '失败');
