@@ -9,10 +9,10 @@ koa 中引入 typescript ，借鉴 mvc 模式
 
 --app (代码)
 --controllers（控制层）
---filters  （过滤器）
+--filters （过滤器）
 --modules （模块）
 --models （model 层）
-  --schemaModel （数据表规范）
+--schemaModel （数据表规范）
 --interface (数据接口)
 --config （配置）
 ==dist （打包生成）
@@ -29,8 +29,6 @@ koa 中引入 typescript ，借鉴 mvc 模式
 2. cd koa-typescript-api
 
 3. yarn
-
-
 
 #### 使用说明
 
@@ -49,45 +47,45 @@ koa 中引入 typescript ，借鉴 mvc 模式
 查看
 打开 postman 或浏览器 输入 http://127.0.0.1:8888/api/v1/test
 
-
 # koa-ts-controllers 解释
+
 import {
-  Controller,
-  Ctx,
-  Req,
-  Body,
-  Get,
-  Post,
-  Delete,
-  Query,
-  Flow,
-  Params,
-  Version,
+Controller,
+Ctx,
+Req,
+Body,
+Get,
+Post,
+Delete,
+Query,
+Flow,
+Params,
+Version,
 } from 'koa-ts-controllers';
 
-Controller('/test') 
-Req 
-Body()  接收post参数
+Controller('/test')
+Req
+Body() 接收 post 参数
 Flow() 中间件
-Get()  定义get连接
-Post()  定义post连接
-Delete()  定义删除连接
-Version()  版本
+Get() 定义 get 连接
+Post() 定义 post 连接
+Delete() 定义删除连接
+Version() 版本
 Query() 接收？参数
-Params()  接收/:id/ids 类型参数
-Ctx() 返回值  忽略
+Params() 接收/:id/ids 类型参数
+Ctx() 返回值 忽略
 
 import { bootstrapControllers } from 'koa-ts-controllers';
 
 bootstrapControllers(app, {
-  router,  //路由
-  basePath: '/api',//接口路径
-  controllers: [
-    path.join(__dirname, '/app/controllers/*'),
-  ],
-  versions: {
-    1: 'This version is deprecated and will soon be removed. Consider migrating to version 2 ASAP',
-    2: true,
-    dangote: true, // 非常适合定制的、特定于业务客户端的端点版本
-  },//版本 v1、v2、vdangote
+router, //路由
+basePath: '/api',//接口路径
+controllers: [
+path.join(__dirname, '/app/controllers/*'),
+],
+versions: {
+1: 'This version is deprecated and will soon be removed. Consider migrating to version 2 ASAP',
+2: true,
+dangote: true, // 非常适合定制的、特定于业务客户端的端点版本
+},//版本 v1、v2、vdangote
 });
