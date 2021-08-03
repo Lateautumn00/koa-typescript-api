@@ -2,28 +2,35 @@
  * @Description:启动 入口文件
  * @Author: Lanchao cui
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-08-02 17:22:27
+ * @LastEditTime: 2021-08-03 10:27:32
  * @LastEditors: Lanchao cui
  * @Reference:
  */
 import * as Koa from 'koa';
 import * as path from 'path';
 import * as cors from 'koa2-cors';
-import { useControllers } from 'koa-controllers';
+import { bootstrapControllers } from 'koa-ts-controllers';
 import * as http from 'http';
 import * as ws from 'ws';
-import * as qs from 'qs';
 import log4JsModules from './app/modules/log4js.module';
-
+import * as Router from 'koa-router';
+import * as bodyParser from 'koa-bodyparser';
 const app: any = new Koa();
-
+const router = new Router();
 /**
  * logStatus 是否开启日志打印，线上建议设为false
  */
 const logStatus: boolean = true;
-useControllers(app, path.join(__dirname, '/app/controllers/*.controller.js'), {
-  multipart: {
-    dest: '',
+bootstrapControllers(app, {
+  router,
+  basePath: '/api',
+  controllers: [
+    path.join(__dirname, '/app/controllers/*'),
+  ],
+  versions: {
+    1: 'This version is deprecated and will soon be removed. Consider migrating to version 2 ASAP',
+    2: true,
+    dangote: true, // 非常适合定制的、特定于业务客户端的端点版本
   },
 });
 app.use(
@@ -54,6 +61,9 @@ app.use(async (ctx: any, next: any) => {
     log4JsModules.logError(ctx, error, ms);
   }
 });
+app.use(bodyParser());
+app.use(router.routes());
+app.use(router.allowedMethods());
 const server: any = http.createServer(app.callback());
 /**
  * websocket 服务 open   如果不需要  可去掉

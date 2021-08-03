@@ -30,6 +30,8 @@ koa 中引入 typescript ，借鉴 mvc 模式
 
 3. yarn
 
+
+
 #### 使用说明
 
 1. 本地测试启动
@@ -45,4 +47,47 @@ koa 中引入 typescript ，借鉴 mvc 模式
    1.3. pm2 start dist/server.js --name koa-typescript-api
 
 查看
-打开 postman 或浏览器 输入 http://127.0.0.1:8888/test/index
+打开 postman 或浏览器 输入 http://127.0.0.1:8888/api/v1/test
+
+
+# koa-ts-controllers 解释
+import {
+  Controller,
+  Ctx,
+  Req,
+  Body,
+  Get,
+  Post,
+  Delete,
+  Query,
+  Flow,
+  Params,
+  Version,
+} from 'koa-ts-controllers';
+
+Controller('/test') 
+Req 
+Body()  接收post参数
+Flow() 中间件
+Get()  定义get连接
+Post()  定义post连接
+Delete()  定义删除连接
+Version()  版本
+Query() 接收？参数
+Params()  接收/:id/ids 类型参数
+Ctx() 返回值  忽略
+
+import { bootstrapControllers } from 'koa-ts-controllers';
+
+bootstrapControllers(app, {
+  router,  //路由
+  basePath: '/api',//接口路径
+  controllers: [
+    path.join(__dirname, '/app/controllers/*'),
+  ],
+  versions: {
+    1: 'This version is deprecated and will soon be removed. Consider migrating to version 2 ASAP',
+    2: true,
+    dangote: true, // 非常适合定制的、特定于业务客户端的端点版本
+  },//版本 v1、v2、vdangote
+});

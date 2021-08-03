@@ -2,11 +2,23 @@
  * @Description: 用户
  * @Author: Lanchao cui
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-07-31 10:51:24
+ * @LastEditTime: 2021-08-03 15:23:07
  * @LastEditors: Lanchao cui
  * @Reference:
  */
-import { Controller, Get, Post, Ctx, RequestParam } from 'koa-controllers';
+import {
+  Controller,
+  Ctx,
+  Req,
+  Body,
+  Get,
+  Post,
+  Delete,
+  Query,
+  Flow,
+  Params,
+  Version,
+} from 'koa-ts-controllers';
 import UserModel from '../models/user.model';
 import PersonController from './person.controller';
 import {
@@ -20,7 +32,7 @@ import {
   MongodbFind,
   MongodbUpdate,
 } from '../interface/mongodb.interface';
-@Controller
+@Controller('/user')
 class UserController extends PersonController {
   /**
    * 添加数据
@@ -28,12 +40,11 @@ class UserController extends PersonController {
    * @param nickName
    * @param guid
    */
-  @Post('/user/create')
+  @Post('/create')
   public async createUser(
-    @Ctx ctx: any,
-    @RequestParam('nickName', { required: true }) nickName: string,
-    @RequestParam('guid', { required: true }) guid: number,
-    @RequestParam('age', { required: true }) age: number
+    @Body('nickName') nickName: string,
+    @Body('guid') guid: number,
+    @Body('age') age: number
   ): Promise<any> {
     const userData: UserInterface = {
       nickName,
@@ -42,18 +53,17 @@ class UserController extends PersonController {
     };
     const user: UserModel = new UserModel();
     const createUser = await user.create(userData);
-    return (ctx.body = this.fromData(1000, createUser, '成功'));
+    return super.fromData(1000, createUser, '成功');
   }
   /**
    * 修改
    * @param ctx
    * @param guid
    */
-  @Post('/user/update')
+  @Post('/update')
   public async updateUser(
-    @Ctx ctx: any,
-    @RequestParam('guid', { required: true }) guid: number,
-    @RequestParam('nickName', { required: true }) nickName: string
+    @Body('guid') guid: number,
+    @Body('nickName') nickName: string
   ): Promise<any> {
     const user: UserModel = new UserModel();
     const where: UpdateUserGuid = {
@@ -63,43 +73,36 @@ class UserController extends PersonController {
       nickName,
     };
     const updateData: MongodbUpdate = await user.update(where, data);
-    return (ctx.body = updateData.status
-      ? this.fromData(1000, {}, '成功')
-      : this.fromData(1001, {}, '失败'));
+    return updateData.status
+      ? super.fromData(1000, {}, '成功')
+      : super.fromData(1001, {}, '失败');
   }
   /**
    * 查询数据
    * @param ctx
    * @param guid
    */
-  @Get('/user/getList')
-  public async getUser(
-    @Ctx ctx: any,
-    @RequestParam('guid', { required: false }) guid?: number
-  ): Promise<any> {
+  @Get('/getList')
+  public async getUser(@Params('guid') guid?: number): Promise<any> {
     const user: UserModel = new UserModel();
     const where: GetUserInterface = {};
     if (guid) where.guid = guid;
     const readUser: MongodbFind = await user.find(where);
-    return (ctx.body = this.fromData(1000, readUser.data, '成功'));
+    return super.fromData(1000, readUser.data, '成功');
   }
   /**
    * 删除
    */
-  @Post('/user/remove')
-  public async removeUser(
-    @Ctx ctx: any,
-    @RequestParam('guid', { required: true }) guid: number
-  ): Promise<any> {
+  @Delete('/remove/:guid')
+  public async removeUser(@Params('guid') guid: number): Promise<any> {
     const user: UserModel = new UserModel();
     const where: UpdateUserGuid = {
       guid,
     };
     const removeUser: MongodbRemove = await user.remove(where);
-    console.log(removeUser);
-    return (ctx.body = removeUser.status
-      ? this.fromData(1000, {}, '成功')
-      : this.fromData(1001, {}, '失败'));
+    return removeUser.status
+      ? super.fromData(1000, {}, '成功')
+      : super.fromData(1001, {}, '失败');
   }
 }
 export default UserController;
