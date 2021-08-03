@@ -2,7 +2,7 @@
  * @Description: 用户
  * @Author: Lanchao cui
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-08-03 20:51:15
+ * @LastEditTime: 2021-08-03 20:53:09
  * @LastEditors: Lanchao cui
  * @Reference:
  */
@@ -19,11 +19,9 @@ import {
   Params,
   Version,
 } from 'koa-ts-controllers';
-import UserModel from '../models/user.model';
 import PersonController from './person.controller';
 import {
   UserInterface,
-  GetUserInterface,
   UpdateUserGuid,
   UpdateUserNickName,
 } from '../interface/user.interface';
