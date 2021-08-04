@@ -2,7 +2,7 @@
  * @Description: user逻辑层
  * @Author: Lanchao cui
  * @Date: 2021-08-03 20:20:51
- * @LastEditTime: 2021-08-03 20:52:06
+ * @LastEditTime: 2021-08-04 11:33:31
  * @LastEditors: Lanchao cui
  * @Reference:
  */
@@ -21,57 +21,54 @@ import {
 class UserService {
   /**
    * 处理添加数据的逻辑
-   * @description: 
+   * @description:
    * @param  {*}
    * @return {*}
    * @param {UserInterface} userData
-   */  
+   */
   public async createUser(userData: UserInterface): Promise<any> {
-    const user: UserModel = new UserModel();
-    const createUser = await user.create(userData);
+    const createUser = await UserModel.prototype.create(userData);
     return createUser;
   }
   /**
    * 处理更新数据逻辑
-   * @description: 
+   * @description:
    * @param  {*}
    * @return {*}
-   */  
+   */
   public async updateUser(
     where: UpdateUserGuid,
     data: UpdateUserNickName
   ): Promise<any> {
-    const user: UserModel = new UserModel();
-    const updateData: MongodbUpdate = await user.update(where, data);
+    const updateData: MongodbUpdate = await UserModel.prototype.update(where, data);
     return updateData;
   }
   /**
    * 处理查询数据逻辑
-   * @description: 
+   * @description:
    * @param  {*}
    * @return {*}
    * @param {*} guid
-   */  
+   */
   public async getUser(guid): Promise<any> {
     const where: GetUserInterface = {};
     if (guid) where.guid = guid;
-    const user: UserModel = new UserModel();
-    const readUser: MongodbFind = await user.find(where);
+    const readUser: MongodbFind = await UserModel.prototype.find(where);
+
     return readUser;
   }
   /**
    * 处理删除数据逻辑
-   * @description: 
+   * @description:
    * @param  {*}
    * @return {*}
    * @param {*} guid
-   */  
+   */
   public async removeUser(guid): Promise<any> {
-    const user: UserModel = new UserModel();
     const where: UpdateUserGuid = {
       guid,
     };
-    const removeUser: MongodbRemove = await user.remove(where);
+    const removeUser: MongodbRemove = await UserModel.prototype.remove(where);
     return removeUser;
   }
 }

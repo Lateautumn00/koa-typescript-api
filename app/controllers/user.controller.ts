@@ -2,7 +2,7 @@
  * @Description: 用户
  * @Author: Lanchao cui
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-08-03 20:53:09
+ * @LastEditTime: 2021-08-04 11:32:42
  * @LastEditors: Lanchao cui
  * @Reference:
  */
@@ -50,8 +50,7 @@ class UserController extends PersonController {
       guid,
       age,
     };
-    const service = new UserService();
-    const createUser = await service.createUser(userData);
+    const createUser = await UserService.prototype.createUser(userData);
     return super.fromData(1000, createUser, '成功');
   }
   /**
@@ -71,8 +70,7 @@ class UserController extends PersonController {
     const data: UpdateUserNickName = {
       nickName,
     };
-    const service = new UserService();
-    const updateData: MongodbUpdate = await service.updateUser(where, data);
+    const updateData: MongodbUpdate = await UserService.prototype.updateUser(where, data);
     return updateData.status
       ? super.fromData(1000, {}, '成功')
       : super.fromData(1001, {}, '失败');
@@ -85,8 +83,7 @@ class UserController extends PersonController {
    */
   @Get('/getList/:guid?')
   public async getUser(@Params('guid') guid?: number): Promise<any> {
-    const service = new UserService();
-    const readUser: MongodbFind = await service.getUser(guid ? guid : '');
+    const readUser: MongodbFind = await UserService.prototype.getUser(guid ? guid : '');
     return super.fromData(1000, readUser.data, '成功');
   }
   /**
@@ -97,8 +94,7 @@ class UserController extends PersonController {
    */
   @Delete('/remove/:guid')
   public async removeUser(@Params('guid') guid: number): Promise<any> {
-    const service = new UserService();
-    const removeUser: MongodbRemove = await service.removeUser(guid);
+    const removeUser: MongodbRemove = await UserService.prototype.removeUser(guid);
     return removeUser.status
       ? super.fromData(1000, {}, '成功')
       : super.fromData(1001, {}, '失败');

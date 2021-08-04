@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Lanchao cui
  * @Date: 2021-07-15 16:40:49
- * @LastEditTime: 2021-08-03 20:39:59
+ * @LastEditTime: 2021-08-04 09:19:42
  * @LastEditors: Lanchao cui
  * @Reference: 
 -->
@@ -10,7 +10,7 @@
 
 #### 介绍
 
-koa 中引入 typescript ，借鉴 mvc 模式
+koa 中引入 typescript
 使用 koa-controllers 作为装饰器（注：也可用 koa-router 来书写接口）
 
 #### 软件架构
