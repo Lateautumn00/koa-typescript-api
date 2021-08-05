@@ -2,7 +2,7 @@
  * @Description: user逻辑层
  * @Author: Lanchao cui
  * @Date: 2021-08-03 20:20:51
- * @LastEditTime: 2021-08-04 11:33:31
+ * @LastEditTime: 2021-08-04 20:18:02
  * @LastEditors: Lanchao cui
  * @Reference:
  */
@@ -27,7 +27,8 @@ class UserService {
    * @param {UserInterface} userData
    */
   public async createUser(userData: UserInterface): Promise<any> {
-    const createUser = await UserModel.prototype.create(userData);
+    const user: UserModel = new UserModel();
+    const createUser = await user.create(userData);
     return createUser;
   }
   /**
@@ -40,7 +41,8 @@ class UserService {
     where: UpdateUserGuid,
     data: UpdateUserNickName
   ): Promise<any> {
-    const updateData: MongodbUpdate = await UserModel.prototype.update(where, data);
+    const user: UserModel = new UserModel();
+    const updateData: MongodbUpdate = await user.update(where, data);
     return updateData;
   }
   /**
@@ -53,7 +55,8 @@ class UserService {
   public async getUser(guid): Promise<any> {
     const where: GetUserInterface = {};
     if (guid) where.guid = guid;
-    const readUser: MongodbFind = await UserModel.prototype.find(where);
+    const user: UserModel = new UserModel();
+    const readUser: MongodbFind = await user.find(where);
 
     return readUser;
   }
@@ -68,7 +71,8 @@ class UserService {
     const where: UpdateUserGuid = {
       guid,
     };
-    const removeUser: MongodbRemove = await UserModel.prototype.remove(where);
+    const user: UserModel = new UserModel();
+    const removeUser: MongodbRemove = await user.remove(where);
     return removeUser;
   }
 }

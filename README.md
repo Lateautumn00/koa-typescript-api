@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: Lanchao cui
  * @Date: 2021-07-15 16:40:49
- * @LastEditTime: 2021-08-04 09:19:42
+ * @LastEditTime: 2021-08-05 19:51:52
  * @LastEditors: Lanchao cui
  * @Reference: 
 -->
@@ -42,7 +42,7 @@ koa 中引入 typescript
 #### 使用说明
 
 1. 本地测试启动
-   1.1. yarn run watch
+   1.1. yarn run watch  (或者在vscode中 点击菜单 任务-运行任务 选择 tsc：监视-tsconfig.json 然后就可以自动生成代码)
 
    1.2. yarn run dev
 
