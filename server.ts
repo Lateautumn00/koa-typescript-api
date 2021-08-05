@@ -2,7 +2,7 @@
  * @Description:启动 入口文件
  * @Author: Lanchao cui
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-08-03 10:27:32
+ * @LastEditTime: 2021-08-05 20:51:21
  * @LastEditors: Lanchao cui
  * @Reference:
  */
@@ -24,9 +24,7 @@ const logStatus: boolean = true;
 bootstrapControllers(app, {
   router,
   basePath: '/api',
-  controllers: [
-    path.join(__dirname, '/app/controllers/*'),
-  ],
+  controllers: [path.join(__dirname, '/app/controllers/*')],
   versions: {
     1: 'This version is deprecated and will soon be removed. Consider migrating to version 2 ASAP',
     2: true,
@@ -68,8 +66,8 @@ const server: any = http.createServer(app.callback());
 /**
  * websocket 服务 open   如果不需要  可去掉
  */
-const webSocket: any = new ws.Server({ server });
-webSocket.on('connection', function (conn: any, request: any) {
+const ws1: any = new ws.Server({ noServer: true });
+ws1.on('connection', function (conn: any, request: any) {
   console.log('ws connect');
   conn.on('message', (message: any) => {
     console.log('received: %s', message);
@@ -93,12 +91,9 @@ webSocket.on('connection', function (conn: any, request: any) {
 server.on('upgrade', function upgrade(request: any, socket: any, head: any) {
   const pathname: string = request.url.split('?')[0];
   if (pathname === '/socket/getName') {
-    console.log('进来啦');
-    /**
-     * server.handleUpgrade(request, socket, head, function done(conn) {
-     * server.emit('connection', conn, request);
-     * });
-     */
+    ws1.handleUpgrade(request, socket, head, function done(ws) {
+      ws1.emit('connection', ws, request);
+    });
   } else {
     console.error('不存在的websocket连接地址');
     socket.destroy();
