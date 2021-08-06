@@ -6,7 +6,7 @@
  * @LastEditors: Lanchao cui
  * @Reference:
  */
-import UserModel from '../models/user.model';
+import UserModel from '../modules/mongodb.modules';
 import {
   UserInterface,
   GetUserInterface,
@@ -22,7 +22,8 @@ class UserService {
    * @param {UserInterface} userData
    */
   public async createUser(userData: UserInterface): Promise<any> {
-    const createUser = await UserModel.model('create', {}, userData);
+    const newModel = new UserModel('user');
+    const createUser = await newModel.model('create', {}, userData);
     return createUser;
   }
   /**
@@ -35,7 +36,8 @@ class UserService {
     where: UpdateUserGuid,
     data: UpdateUserNickName
   ): Promise<any> {
-    const updateData = await UserModel.model('updateOne', where, data);
+    const newModel = new UserModel('user');
+    const updateData = await newModel.model('updateOne', where, data);
     return updateData;
   }
   /**
@@ -48,7 +50,8 @@ class UserService {
   public async getUser(guid): Promise<any> {
     const where: GetUserInterface = {};
     if (guid) where.guid = guid;
-    const readUser = await UserModel.model('find', where, {});
+    const newModel = new UserModel('user');
+    const readUser = await newModel.model('find', where, {});
     return readUser;
   }
   /**
@@ -62,7 +65,8 @@ class UserService {
     const where: UpdateUserGuid = {
       guid,
     };
-    const removeUser = await UserModel.model('remove', where, {});
+    const newModel = new UserModel('user');
+    const removeUser = await newModel.model('remove', where, {});
     return removeUser;
   }
 }

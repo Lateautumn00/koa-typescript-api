@@ -15,7 +15,7 @@
     "type": "git",
     "url": "https://gitee.com/cuilanchao/koa-typescript-api.git"
   },
-  "author": "晚秋",
+  "author": "Lanchao cui",
   "license": "ISC",
   "dependencies": {
     "@types/koa-bodyparser": "^4.3.2",
@@ -33,7 +33,6 @@
     "koa2-cors": "^2.0.6",
     "log4js": "^6.3.0",
     "mongoose": "^5.13.4",
-    "reflect-metadata": "^0.1.13",
     "ws": "^8.0.0"
   },
   "devDependencies": {

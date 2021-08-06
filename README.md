@@ -19,9 +19,8 @@ koa 中引入 typescript
 ----controllers（控制层,只负责接收参数和接收结果）
 ----service (逻辑层 负责处理具体逻辑)
 ----filters （过滤器）
-----modules （模块）
-----models （model 层 只负责处理与第三方数据交互）
-------schemaModel （数据表规范）
+----modules （模块、数据库连接、数据库操作、日志逻辑等）
+----models （model 层 数据库model）
 ----interface (数据接口)
 --config （配置）
 ==dist （打包生成）
