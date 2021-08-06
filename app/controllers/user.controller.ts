@@ -2,7 +2,7 @@
  * @Description: 用户
  * @Author: Lanchao cui
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-08-04 20:40:14
+ * @LastEditTime: 2021-08-06 09:52:51
  * @LastEditors: Lanchao cui
  * @Reference:
  */
@@ -25,11 +25,6 @@ import {
   UpdateUserGuid,
   UpdateUserNickName,
 } from '../interface/user.interface';
-import {
-  MongodbRemove,
-  MongodbFind,
-  MongodbUpdate,
-} from '../interface/mongodb.interface';
 import UserService from '../service/user.sevice';
 @Controller('/user')
 class UserController extends PersonController {
@@ -72,7 +67,7 @@ class UserController extends PersonController {
       nickName,
     };
     const server: UserService = new UserService();
-    const updateData: MongodbUpdate = await server.updateUser(where, data);
+    const updateData = await server.updateUser(where, data);
     return updateData.status
       ? super.fromData(1000, {}, '成功')
       : super.fromData(1001, {}, '失败');
@@ -86,7 +81,7 @@ class UserController extends PersonController {
   @Get('/getList/:guid?')
   public async getUser(@Params('guid') guid?: number): Promise<any> {
     const server: UserService = new UserService();
-    const readUser: MongodbFind = await server.getUser(guid ? guid : '');
+    const readUser = await server.getUser(guid ? guid : '');
     return super.fromData(1000, readUser.data, '成功');
   }
   /**
@@ -98,7 +93,7 @@ class UserController extends PersonController {
   @Delete('/remove/:guid')
   public async removeUser(@Params('guid') guid: number): Promise<any> {
     const server: UserService = new UserService();
-    const removeUser: MongodbRemove = await server.removeUser(guid);
+    const removeUser = await server.removeUser(guid);
     return removeUser.status
       ? super.fromData(1000, {}, '成功')
       : super.fromData(1001, {}, '失败');

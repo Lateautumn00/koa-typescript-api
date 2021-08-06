@@ -2,7 +2,7 @@
  * @Description: user逻辑层
  * @Author: Lanchao cui
  * @Date: 2021-08-03 20:20:51
- * @LastEditTime: 2021-08-04 20:18:02
+ * @LastEditTime: 2021-08-06 10:35:52
  * @LastEditors: Lanchao cui
  * @Reference:
  */
@@ -13,11 +13,6 @@ import {
   UpdateUserGuid,
   UpdateUserNickName,
 } from '../interface/user.interface';
-import {
-  MongodbRemove,
-  MongodbFind,
-  MongodbUpdate,
-} from '../interface/mongodb.interface';
 class UserService {
   /**
    * 处理添加数据的逻辑
@@ -27,8 +22,7 @@ class UserService {
    * @param {UserInterface} userData
    */
   public async createUser(userData: UserInterface): Promise<any> {
-    const user: UserModel = new UserModel();
-    const createUser = await user.create(userData);
+    const createUser = await UserModel.model('create', {}, userData);
     return createUser;
   }
   /**
@@ -41,8 +35,7 @@ class UserService {
     where: UpdateUserGuid,
     data: UpdateUserNickName
   ): Promise<any> {
-    const user: UserModel = new UserModel();
-    const updateData: MongodbUpdate = await user.update(where, data);
+    const updateData = await UserModel.model('updateOne', where, data);
     return updateData;
   }
   /**
@@ -55,9 +48,7 @@ class UserService {
   public async getUser(guid): Promise<any> {
     const where: GetUserInterface = {};
     if (guid) where.guid = guid;
-    const user: UserModel = new UserModel();
-    const readUser: MongodbFind = await user.find(where);
-
+    const readUser = await UserModel.model('find', where, {});
     return readUser;
   }
   /**
@@ -71,8 +62,7 @@ class UserService {
     const where: UpdateUserGuid = {
       guid,
     };
-    const user: UserModel = new UserModel();
-    const removeUser: MongodbRemove = await user.remove(where);
+    const removeUser = await UserModel.model('remove', where, {});
     return removeUser;
   }
 }

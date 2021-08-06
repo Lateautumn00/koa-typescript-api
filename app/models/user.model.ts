@@ -2,28 +2,44 @@
  * @Description:usermodel
  * @Author: Lanchao cui
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-08-04 11:31:31
+ * @LastEditTime: 2021-08-06 10:35:02
  * @LastEditors: Lanchao cui
  * @Reference:
  */
 import PersonModel from './person.model';
 import userSchemaModel from './schemaModel/user.schema.model';
-import {
-  UserInterface,
-  GetUserInterface,
-  UpdateUserGuid,
-  UpdateUserNickName,
-} from '../interface/user.interface';
-import {
-  MongodbRemove,
-  MongodbFind,
-  MongodbUpdate,
-} from '../interface/mongodb.interface';
 class UserModel extends PersonModel {
+  static instance: any;
+  static getInstance() {
+    if (!UserModel.instance) {
+      UserModel.instance = new UserModel();
+    }
+    return UserModel.instance;
+  }
   constructor() {
     super();
   }
-  async create<UserInterface>(data: UserInterface): Promise<object> {
+  async model(fun: string, where: object, data: object) {
+    let returnData: object = {};
+    switch (fun) {
+      case 'create':
+        returnData = await this.create(data);
+        break;
+      case 'update':
+        returnData = await this.updateOne(where, data);
+        break;
+      case 'find':
+        returnData = await this.find(where);
+        break;
+      case 'remove':
+        returnData = await this.remove(where);
+        break;
+      default:
+        break;
+    }
+    return returnData;
+  }
+  private async create(data: object): Promise<object> {
     /**
      * 实例化
      */
@@ -34,23 +50,20 @@ class UserModel extends PersonModel {
     const addData: object = await createModel.save();
     return addData;
   }
-  async update<UpdateUserGuid, UpdateUserNickName>(
-    where: UpdateUserGuid,
-    data: UpdateUserNickName
-  ): Promise<MongodbUpdate> {
+  private async updateOne(where: object, data: object): Promise<object> {
     const updateData = await userSchemaModel.updateOne(where, data);
     return {
       status: updateData.n ? true : false,
     };
   }
-  async find<GetUserInterface>(where: GetUserInterface): Promise<MongodbFind> {
+  private async find(where: object): Promise<object> {
     const list: Array<any> = await userSchemaModel.find(where);
     return {
       count: list.length,
       data: list,
     };
   }
-  async remove<UpdateUserGuid>(where: UpdateUserGuid): Promise<MongodbRemove> {
+  private async remove(where: object): Promise<object> {
     const removeData = await userSchemaModel.remove(where);
     return {
       status: removeData.n ? true : false,
@@ -58,4 +71,4 @@ class UserModel extends PersonModel {
     };
   }
 }
-export default UserModel;
+export default UserModel.getInstance();
