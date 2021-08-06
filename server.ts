@@ -14,6 +14,9 @@ import * as http from 'http';
 import log4JsModules from './app/modules/log4js.module';
 import * as Router from 'koa-router';
 import * as bodyParser from 'koa-bodyparser';
+/**
+ * 导入websocket ，不使用可隐藏掉
+ */
 import wsServer from './app/socket/index.socket';
 const app: any = new Koa();
 const router = new Router();
