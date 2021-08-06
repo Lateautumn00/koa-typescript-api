@@ -2,7 +2,7 @@
  * @Description:定义抽象函数为model 基类
  * @Author: Lanchao cui
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-08-06 10:31:41
+ * @LastEditTime: 2021-08-06 10:52:55
  * @LastEditors: Lanchao cui
  * @Reference:
  */
@@ -18,6 +18,6 @@ abstract class PersonModel {
    * @param where
    * @param data
    */
-  abstract model(fun: string, where: object, data: object);
+  abstract model(fun: string, where: object, data: object): Promise<object>;
 }
 export default PersonModel;

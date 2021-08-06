@@ -2,7 +2,7 @@
  * @Description:启动 入口文件
  * @Author: Lanchao cui
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-08-05 20:51:21
+ * @LastEditTime: 2021-08-06 20:21:43
  * @LastEditors: Lanchao cui
  * @Reference:
  */
@@ -11,10 +11,10 @@ import * as path from 'path';
 import * as cors from 'koa2-cors';
 import { bootstrapControllers } from 'koa-ts-controllers';
 import * as http from 'http';
-import * as ws from 'ws';
 import log4JsModules from './app/modules/log4js.module';
 import * as Router from 'koa-router';
 import * as bodyParser from 'koa-bodyparser';
+import wsServer from './app/socket/index.socket';
 const app: any = new Koa();
 const router = new Router();
 /**
@@ -64,44 +64,9 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 const server: any = http.createServer(app.callback());
 /**
- * websocket 服务 open   如果不需要  可去掉
+ * websocket 服务   如果不需要  可去掉
  */
-const ws1: any = new ws.Server({ noServer: true });
-ws1.on('connection', function (conn: any, request: any) {
-  console.log('ws connect');
-  conn.on('message', (message: any) => {
-    console.log('received: %s', message);
-    message = JSON.parse(message);
-    switch (message.type) {
-      case 'PING':
-        conn.send(
-          JSON.stringify({
-            code: 1000,
-            type: 'PONG',
-            data: {},
-            message: '成功',
-          })
-        );
-        break;
-      default:
-        break;
-    }
-  });
-});
-server.on('upgrade', function upgrade(request: any, socket: any, head: any) {
-  const pathname: string = request.url.split('?')[0];
-  if (pathname === '/socket/getName') {
-    ws1.handleUpgrade(request, socket, head, function done(ws) {
-      ws1.emit('connection', ws, request);
-    });
-  } else {
-    console.error('不存在的websocket连接地址');
-    socket.destroy();
-  }
-});
-/**
- * websocket 服务 end
- */
+wsServer(server);
 server.on('error', (err: any, ctx: any) => {
   console.error('server error', err, ctx);
 });
