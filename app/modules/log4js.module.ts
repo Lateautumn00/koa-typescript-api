@@ -1,9 +1,9 @@
 /*
  * @Description:log4js日志模块
- * @Author: Lanchao cui
+ * @Author: lanchao
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-07-30 20:08:38
- * @LastEditors: Lanchao cui
+ * @LastEditTime: 2021-08-07 19:43:39
+ * @LastEditors: lanchao
  * @Reference:
  */
 import * as log4js from 'log4js';

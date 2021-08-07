@@ -1,9 +1,9 @@
 /*
  * @Description:websocket入口
- * @Author: Lanchao cui
+ * @Author: lanchao
  * @Date: 2021-08-06 20:01:25
- * @LastEditTime: 2021-08-07 19:30:28
- * @LastEditors: Lanchao cui
+ * @LastEditTime: 2021-08-07 19:40:41
+ * @LastEditors: lanchao
  * @Reference:
  */
 import demo1Ws from './ws/demo1.ws';

@@ -1,9 +1,9 @@
 /*
  * @Description:默认
- * @Author: Lanchao cui
+ * @Author: lanchao
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-08-07 19:25:41
- * @LastEditors: Lanchao cui
+ * @LastEditTime: 2021-08-07 19:40:27
+ * @LastEditors: lanchao
  * @Reference:
  */
 import person from './person.controller';

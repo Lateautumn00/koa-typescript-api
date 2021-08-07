@@ -1,9 +1,9 @@
 /*
  * @Description:mongodb库模块
- * @Author: Lanchao cui
+ * @Author: lanchao
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-08-03 09:49:22
- * @LastEditors: Lanchao cui
+ * @LastEditTime: 2021-08-07 19:43:56
+ * @LastEditors: lanchao
  * @Reference:
  */
 import * as mongoose from 'mongoose';

@@ -1,17 +1,32 @@
 <!--
- * @Description: 
- * @Author: Lanchao cui
+ * @Description:
+ * @Author: lanchao
  * @Date: 2021-07-15 16:40:49
- * @LastEditTime: 2021-08-05 19:51:52
- * @LastEditors: Lanchao cui
- * @Reference: 
--->
+ * @LastEditTime: 2021-08-07 19:54:59
+ * @LastEditors: lanchao
+ * @Reference:
+ *  ┌─────────────────────────────────────────────────────────────┐
+ *  │┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐│
+ *  ││Esc│!1 │@2 │#3 │$4 │%5 │^6 │&7 │*8 │(9 │)0 │_- │+= │|\ │`~ ││
+ *  │├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴───┤│
+ *  ││ Tab │ Q │ W │ E │ R │ T │ Y │ U │ I │ O │ P │{[ │}] │ BS  ││
+ *  │├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤│
+ *  ││ Ctrl │ A │ S │ D │ F │ G │ H │ J │ K │ L │: ;│" '│ Enter  ││
+ *  │├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┬───┤│
+ *  ││ Shift  │ Z │ X │ C │ V │ B │ N │ M │< ,│> .│? /│Shift │Fn ││
+ *  │└─────┬──┴┬──┴──┬┴───┴───┴───┴───┴───┴──┬┴───┴┬──┴┬─────┴───┘│
+ *  │      │Fn │ Alt │         Space         │ Alt │Win│   HHKB   │
+ *  │      └───┴─────┴───────────────────────┴─────┴───┘          │
+ *  └─────────────────────────────────────────────────────────────┘
+ -->
+
 # koa-typescript-api
 
 #### 介绍
 
 koa 中引入 typescript
 使用 koa-controllers 作为装饰器（注：也可用 koa-router 来书写接口）
+实现 http 与 websocket
 
 #### 软件架构
 
@@ -20,7 +35,7 @@ koa 中引入 typescript
 ----service (逻辑层 负责处理具体逻辑)
 ----filters （过滤器）
 ----modules （模块、数据库连接、数据库操作、日志逻辑等）
-----models （model 层 数据库model）
+----models （model 层 数据库 model）
 ----interface (数据接口)
 --config （配置）
 ==dist （打包生成）
@@ -41,7 +56,7 @@ koa 中引入 typescript
 #### 使用说明
 
 1. 本地测试启动
-   1.1. yarn run watch  (或者在vscode中 点击菜单 任务-运行任务 选择 tsc：监视-tsconfig.json 然后就可以自动生成代码)
+   1.1. yarn run watch (或者在 vscode 中 点击菜单 任务-运行任务 选择 tsc：监视-tsconfig.json 然后就可以自动生成代码)
 
    1.2. yarn run dev
 
@@ -54,6 +69,8 @@ koa 中引入 typescript
 
 查看
 打开 postman 或浏览器 输入 http://127.0.0.1:8888/api/v1/test
+
+websocket 链接地址 ws://127.0.0.1:8888/socket/getName (例子见/test/websocket.html)
 
 # koa-ts-controllers 解释
 

@@ -1,9 +1,9 @@
 /*
  * @Description: user逻辑层
- * @Author: Lanchao cui
+ * @Author: lanchao
  * @Date: 2021-08-03 20:20:51
- * @LastEditTime: 2021-08-06 10:35:52
- * @LastEditors: Lanchao cui
+ * @LastEditTime: 2021-08-07 19:44:05
+ * @LastEditors: lanchao
  * @Reference:
  */
 import UserModel from '../modules/mongodb.modules';

@@ -1,9 +1,9 @@
 /*
  * @Description: user表字段类型规范
- * @Author: Lanchao cui
+ * @Author: lanchao
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-07-31 09:44:59
- * @LastEditors: Lanchao cui
+ * @LastEditTime: 2021-08-07 19:41:39
+ * @LastEditors: lanchao
  * @Reference:
  */
 export interface UserInterface {

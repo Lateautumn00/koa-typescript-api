@@ -1,9 +1,9 @@
 /*
  * @Description:log4js配置
- * @Author: Lanchao cui
+ * @Author: lanchao
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-08-03 15:30:10
- * @LastEditors: Lanchao cui
+ * @LastEditTime: 2021-08-07 19:45:16
+ * @LastEditors: lanchao
  * @Reference:
  */
 import * as path from 'path';

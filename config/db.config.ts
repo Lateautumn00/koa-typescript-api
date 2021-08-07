@@ -1,11 +1,13 @@
 /*
  * @Description:mongodb配置
- * @Author: Lanchao cui
+ * @Author: lanchao
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-08-02 20:16:56
- * @LastEditors: Lanchao cui
+ * @LastEditTime: 2021-08-07 19:45:06
+ * @LastEditors: lanchao
  * @Reference:
- * db_user: 'koa',用户名
+ * /
+
+ /* db_user: 'koa',用户名
  * db_pwd: 'koa123456',密码
  * db_host: '192.168.184.128:27017',地址
  * db_name: 'koa',库名

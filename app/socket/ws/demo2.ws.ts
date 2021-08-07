@@ -1,9 +1,9 @@
 /*
  * @Description: 处理websocket逻辑
- * @Author: Lanchao cui
+ * @Author: lanchao
  * @Date: 2021-08-06 20:09:24
- * @LastEditTime: 2021-08-07 19:19:17
- * @LastEditors: Lanchao cui
+ * @LastEditTime: 2021-08-07 19:40:19
+ * @LastEditors: lanchao
  * @Reference:
  */
 import * as ws from 'ws';

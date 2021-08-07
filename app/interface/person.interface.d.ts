@@ -1,9 +1,9 @@
 /*
  * @Description: 基类接口
- * @Author: Lanchao cui
+ * @Author: lanchao
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-07-30 20:08:04
- * @LastEditors: Lanchao cui
+ * @LastEditTime: 2021-08-07 19:41:31
+ * @LastEditors: lanchao
  * @Reference:
  */
 export interface FromDataInterface {
