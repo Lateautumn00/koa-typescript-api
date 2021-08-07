@@ -1,5 +1,5 @@
 /**
- * @description: 找不到的第三方包
+ * @description: 声明找不到的第三方包
  * @param  {*}
  * @return {*}
  */
