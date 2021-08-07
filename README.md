@@ -2,7 +2,7 @@
  * @Description:
  * @Author: lanchao
  * @Date: 2021-07-15 16:40:49
- * @LastEditTime: 2021-08-07 19:54:59
+ * @LastEditTime: 2021-08-07 20:38:45
  * @LastEditors: lanchao
  * @Reference:
  *  ┌─────────────────────────────────────────────────────────────┐
@@ -52,6 +52,14 @@ koa 中引入 typescript
 2. cd koa-typescript-api
 
 3. yarn
+
+#### 开发环境
+node.js v12.16.1
+mongodb v4+ 
+#### 工具
+chrome
+postman
+vscode
 
 #### 使用说明
 
