@@ -2,43 +2,30 @@
  * @Description: 用户
  * @Author: Lanchao cui
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-08-06 09:52:51
+ * @LastEditTime: 2021-08-07 19:16:52
  * @LastEditors: Lanchao cui
  * @Reference:
  */
-import {
-  Controller,
-  Ctx,
-  Req,
-  Body,
-  Get,
-  Post,
-  Delete,
-  Query,
-  Flow,
-  Params,
-  Version,
-} from 'koa-ts-controllers';
-import PersonController from './person.controller';
+import person from './person.controller';
 import {
   UserInterface,
   UpdateUserGuid,
   UpdateUserNickName,
 } from '../interface/user.interface';
 import UserService from '../service/user.sevice';
-@Controller('/user')
-class UserController extends PersonController {
+@person.Controller('/user')
+class UserController extends person.PersonController {
   /**
    * 添加数据
    * @description:
    * @param  {*}
    * @return {*}
    */
-  @Post('/create')
+  @person.Post('/create')
   public async createUser(
-    @Body('nickName') nickName: string,
-    @Body('guid') guid: number,
-    @Body('age') age: number
+    @person.Body('nickName') nickName: string,
+    @person.Body('guid') guid: number,
+    @person.Body('age') age: number
   ): Promise<any> {
     const userData: UserInterface = {
       nickName,
@@ -55,10 +42,10 @@ class UserController extends PersonController {
    * @param  {*}
    * @return {*}
    */
-  @Post('/update')
+  @person.Post('/update')
   public async updateUser(
-    @Body('guid') guid: number,
-    @Body('nickName') nickName: string
+    @person.Body('guid') guid: number,
+    @person.Body('nickName') nickName: string
   ): Promise<any> {
     const where: UpdateUserGuid = {
       guid,
@@ -78,8 +65,8 @@ class UserController extends PersonController {
    * @param  {*}
    * @return {*}
    */
-  @Get('/getList/:guid?')
-  public async getUser(@Params('guid') guid?: number): Promise<any> {
+  @person.Get('/getList/:guid?')
+  public async getUser(@person.Params('guid') guid?: number): Promise<any> {
     const server: UserService = new UserService();
     const readUser = await server.getUser(guid ? guid : '');
     return super.fromData(1000, readUser.data, '成功');
@@ -90,8 +77,8 @@ class UserController extends PersonController {
    * @param  {*}
    * @return {*}
    */
-  @Delete('/remove/:guid')
-  public async removeUser(@Params('guid') guid: number): Promise<any> {
+  @person.Delete('/remove/:guid')
+  public async removeUser(@person.Params('guid') guid: number): Promise<any> {
     const server: UserService = new UserService();
     const removeUser = await server.removeUser(guid);
     return removeUser.status

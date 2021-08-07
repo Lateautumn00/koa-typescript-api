@@ -2,13 +2,13 @@
  * @Description: 处理websocket逻辑
  * @Author: Lanchao cui
  * @Date: 2021-08-06 20:09:24
- * @LastEditTime: 2021-08-06 20:21:23
+ * @LastEditTime: 2021-08-07 19:19:17
  * @LastEditors: Lanchao cui
  * @Reference:
  */
 import * as ws from 'ws';
-const demo2Ws: any = new ws.Server({ noServer: true });
-demo2Ws.on('connection', function (conn: any, request: any) {
+const demoWs: any = new ws.Server({ noServer: true });
+demoWs.on('connection', function (conn: any, request: any) {
   console.log('ws connect');
   conn.on('message', (message: any) => {
     console.log('received: %s', message);
@@ -30,4 +30,4 @@ demo2Ws.on('connection', function (conn: any, request: any) {
     }
   });
 });
-export default demo2Ws;
+export default demoWs;
