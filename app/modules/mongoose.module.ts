@@ -1,16 +1,16 @@
 /*
- * @Description:mongodb库模块
+ * @Description:mongodb库连接模块
  * @Author: lanchao
  * @Date: 2021-07-30 20:01:02
- * @LastEditTime: 2021-08-07 19:43:56
+ * @LastEditTime: 2021-08-23 15:22:21
  * @LastEditors: lanchao
  * @Reference:
  */
-import * as mongoose from 'mongoose';
-import mongodb from '../../config/db.config';
-const dbUrl = `mongodb://${mongodb.db_user}:${mongodb.db_pwd}@${mongodb.db_host}/${mongodb.db_name}`;
-mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true });
-const dbConnect = mongoose.connection;
+import * as Mongoose from 'mongoose';
+import MongodbNode from '../../config/db.config';
+const dbUrl = `mongodb://${MongodbNode.db_user}:${MongodbNode.db_pwd}@${MongodbNode.db_host}/${MongodbNode.db_name}`;
+Mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true });
+const dbConnect = Mongoose.connection;
 dbConnect.once('open', () => {
   console.log('mongodb database open');
 });
@@ -20,4 +20,4 @@ dbConnect.once('close', () => {
 dbConnect.on('error', (error: any) => {
   console.log('mongodb database error' + error);
 });
-export default mongoose;
+export default Mongoose;

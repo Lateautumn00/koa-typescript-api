@@ -2,9 +2,9 @@
  * @Description: 声明找不到的第三方包
  * @Author: lanchao
  * @Date: 2021-08-07 10:53:33
- * @LastEditTime: 2021-08-07 19:46:44
+ * @LastEditTime: 2021-08-23 15:08:12
  * @LastEditors: lanchao
- * @Reference: 
+ * @Reference:
  */
 /*
  *                                                     __----~~~~~~~~~~~------___
@@ -26,7 +26,7 @@
  *                                //.-~~~-~_--~- |-------~~~~~~~~
  *                                       //.-~~~--\
  *                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * 
+ *
  *                               神兽保佑            永无BUG
  */
 
@@ -35,3 +35,4 @@ declare module 'koa2-cors';
 declare module 'koa-router';
 declare module 'koa-bodyparser';
 declare module 'ws';
+declare module 'ioredis';

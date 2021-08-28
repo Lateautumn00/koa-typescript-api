@@ -2,7 +2,7 @@
  * @Description:
  * @Author: lanchao
  * @Date: 2021-07-15 16:40:49
- * @LastEditTime: 2021-08-07 20:38:45
+ * @LastEditTime: 2021-08-23 15:35:44
  * @LastEditors: lanchao
  * @Reference:
  *  ┌─────────────────────────────────────────────────────────────┐
@@ -122,3 +122,17 @@ versions: {
 dangote: true, // 非常适合定制的、特定于业务客户端的端点版本
 },//版本 v1、v2、vdangote
 });
+
+# 命名规则
+
+文件夹命名   小写 如：user
+
+文件命名     小写.文件夹名称.ts  如：user.controller.ts
+
+变量命名    小驼峰  如:userList
+
+类命名      大驼峰  如：UserController
+
+导入        import * as Dayjs from 'dayjs'
+
+导出        export default  xxx;  export xxx;  export {xxx1,xxx2}

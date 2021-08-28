@@ -2,30 +2,30 @@
  * @Description:websocket入口
  * @Author: lanchao
  * @Date: 2021-08-06 20:01:25
- * @LastEditTime: 2021-08-07 19:40:41
+ * @LastEditTime: 2021-08-23 15:39:18
  * @LastEditors: lanchao
  * @Reference:
  */
-import demo1Ws from './ws/demo1.ws';
-import demo2Ws from './ws/demo2.ws';
+import Demo1Ws from './ws/demo1.ws';
+import Demo2Ws from './ws/demo2.ws';
 /**
  * @description: 处理socket链接分发数据操作
  * @param  {*}
  * @return {*}
  * @param {any} server
  */
-function wsServer(server: any) {
+function wsServer(server: any): any {
   server.on('upgrade', function upgrade(request: any, socket: any, head: any) {
     const pathname: string = request.url.split('?')[0];
     switch (pathname) {
       case '/socket/getName':
-        demo1Ws.handleUpgrade(request, socket, head, function done(ws) {
-          demo1Ws.emit('connection', ws, request);
+        Demo1Ws.handleUpgrade(request, socket, head, function done(ws) {
+          Demo1Ws.emit('connection', ws, request);
         });
         break;
       case '/socket/getName1':
-        demo2Ws.handleUpgrade(request, socket, head, function done(ws) {
-          demo2Ws.emit('connection', ws, request);
+        Demo2Ws.handleUpgrade(request, socket, head, function done(ws) {
+          Demo2Ws.emit('connection', ws, request);
         });
         break;
       default:

@@ -2,12 +2,12 @@
  * @Description: 处理websocket逻辑
  * @Author: lanchao
  * @Date: 2021-08-06 20:09:24
- * @LastEditTime: 2021-08-07 19:40:12
+ * @LastEditTime: 2021-08-23 15:38:53
  * @LastEditors: lanchao
  * @Reference:
  */
-import * as ws from 'ws';
-const demoWs: any = new ws.Server({ noServer: true });
+import * as Ws from 'ws';
+const demoWs: any = new Ws.Server({ noServer: true });
 demoWs.on('connection', function (conn: any, request: any) {
   console.log('ws connect');
   conn.on('message', (message: any) => {
